@@ -9,7 +9,7 @@ Cheat sheet:
 Login:  
 ssh [netid]@klone.hyak.uw.edu
   
-copy file to server from local directory:  
+copy file to server from local directory (with large files, I got better speeds by using wget to grab files from the web rather than transferring from local. UW network was also faster than home wifi (by an order of magnitude)):  
 scp [source filepath] [destination directory]  
 scp /mnt/c/Users/Dylan/Documents/zaneveld/klone/gcmp/procedure/denoise.py /gscratch/zaneveld/sonettd/gcmp/procedure
 
