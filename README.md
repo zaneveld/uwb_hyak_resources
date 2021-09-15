@@ -17,7 +17,7 @@ view available resources:
 hyakalloc
 
 request compute node (activate screen (https://linuxize.com/post/how-to-use-linux-screen/) first; it doesn't seem like it can be activated from a compute node):  
-srun -A zaneveld -p compute-bigmem -t=[hours:minutes:seconds OR days-hours] --mem=[memory amount]G --pty /bin/bash
+srun -A zaneveld -p compute-bigmem --time=[hours:minutes:seconds OR days-hours] --mem=[memory amount]G --pty /bin/bash
 
 view your active compute nodes:  
 squeue -u [netid]
