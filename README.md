@@ -1,4 +1,4 @@
-# uwb_hyak_resources
+# UWB HYAK resources
 Resources for users of the UWB Hyak nodes
 
 ## Official Hyak documentation
@@ -6,13 +6,37 @@ https://hyak.uw.edu/docs
 
 ## Cheat sheet
 
+### Setup (skip if already familiar with and set up for SSH)
+For Windows users, you can install Git. This will come with Git BASH, a command line BASH interface. Git BASH includes `ssh`, a command line program that lets you connect to the server.
+
+
+
 ### Login
+In order to work on Hyak you'll need to log in. From within either Terminal (MacOSX) or Git Bash (Windows)
+
 ssh [netid]@klone.hyak.uw.edu
+
+You'll need your phone handy because the HYAK server will call your phone to confirm your login.
 
 ### Upload file
 copy file to server from local directory (with large files, I got better speeds by using wget to grab files from the web rather than transferring from local. UW network was also faster than home wifi (by an order of magnitude)):  
 scp [source filepath] [destination directory]  
 scp /mnt/c/Users/Dylan/Documents/zaneveld/klone/gcmp/procedure/denoise.py /gscratch/zaneveld/sonettd/gcmp/procedure
+
+## For folks in the Zaneveld lab / BBIO495 who are using QIIME2
+
+### Update your PATH to include the lab installation of QIIME2
+The PATH variable is a list of folders, each separated by a colon (`:`), that tells the machine where to look for programs when you type a program name into the command line interface. In our case, we have some installed software (QIIME2) that we want to run from the command line and share across accounts. Usually this would be added to your PATH when you install the software, but here we want to share a copy of the software across accounts, so we manually add it to PATH using the `export` command in BASH. This will let us run the `conda` package manager that contains a copy of the python programming language, as well as the QIIME2 software.
+
+export PATH=$PATH:/gscratch/zaneveld/miniconda3/bin:/gscratch/zaneveld/miniconda3/condabin
+
+### Activate your QIIME2 environment within the conda package manager
+Once you have added conda to your path, you can then use it to activate QIIME2.
+
+source activate qiime2-2021.4
+
+# CRITICAL NOTE: DO NOT RUN THE QIIME2 TUTORIAL DIRECTLY ON THE LOGIN NODE. You **MUST** first get an interactive node using srun.
+
 
 ### View available nodes
 **view available resources:**  
