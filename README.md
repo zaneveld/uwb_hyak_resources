@@ -38,11 +38,15 @@ srun -A bbiosci -p compute --time=3:00:00 --mem=20G --pty /bin/bash
 
 Use this for short-term tasks
 
-### Request nodes and run a script 
+### Request nodes and run a script (for longer scripts)
+You can also write out commands into a file and run them using slurm. 
 sbatch [filepath].slurm  
 instructions for .slurm file here (https://hyak.uw.edu/docs/compute/scheduling-jobs#batch-jobs). Only thing to note is that if you're using qiime2, you'll need to activate the conda environment within the script by adding these lines above your command line or python instructions:  
 eval "$(conda shell.bash hook)"  
 conda activate [qiime2 environment] 
+
+### Head to the class directory
+cd /gscratch/zaneveld/bbio495
 
 
 ### Update your PATH to include the lab installation of QIIME2
