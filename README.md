@@ -7,8 +7,7 @@ https://hyak.uw.edu/docs
 ## Cheat sheet
 
 ### Setup (skip if already familiar with and set up for SSH)
-For Windows users, you can install Git. This will come with Git BASH, a command line BASH interface. Git BASH includes `ssh`, a command line program that lets you connect to the server.
-
+For Windows users, you can install [Git](https://git-scm.com/downloads). This will come with Git BASH, a command line BASH interface. Git BASH includes `ssh`, a command line program that lets you connect to the server.
 
 
 ### Login
