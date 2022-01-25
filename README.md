@@ -34,7 +34,7 @@ request interactive compute node (activate screen (https://linuxize.com/post/how
 srun -A zaneveld -p compute-bigmem --time=[hours:minutes:seconds OR days-hours] --mem=[memory amount]G --pty /bin/bash
 
 *Example*:
-srun -A bbiosci -p compute --time=3:00:00 --mem=20G --pty /bin/bash
+srun -A bbiosci -p compute --time=3:00:00 --mem=15G --pty /bin/bash
 
 Use this for short-term tasks
 
