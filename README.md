@@ -21,7 +21,16 @@ You'll need your phone handy because the HYAK server will call your phone to con
 ### Upload file
 copy file to server from local directory (with large files, I got better speeds by using wget to grab files from the web rather than transferring from local. UW network was also faster than home wifi (by an order of magnitude)):  
 scp [source filepath] [destination directory]  
-scp /mnt/c/Users/Dylan/Documents/zaneveld/klone/gcmp/procedure/denoise.py /gscratch/zaneveld/sonettd/gcmp/procedure
+
+scp ./GSMP_metadata.txt zaneveld@klone.hyak.uw.edu:/gscratch/zaneveld/bbio495/GSMP_sponge_data
+
+### Download a file
+Download a file called GSMP_metadata.txt from the zaneveld account on klone.
+
+The format is `scp` [username]@[server]:[filepath] [destination] where each thing in brackets gets replaced by the username, server address, filepath, or local destination based on your account and what file you want to copy. 
+
+*Example*
+scp zaneveld@klone.hyak.uw.edu:/gscratch/zaneveld/bbio495/GSMP_sponge_data/GSMP_metadata.txt ./GSMP_metadata.txt 
 
 ## For folks in the Zaneveld lab / BBIO495 who are using QIIME2
 
