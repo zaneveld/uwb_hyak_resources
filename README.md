@@ -55,7 +55,7 @@ eval "$(conda shell.bash hook)"
 conda activate [qiime2 environment] 
 
 ### Head to the class directory
-cd /gscratch/zaneveld/bbio495
+cd /gscratch/zaneveld/bbio495_2022
 
 
 ### Update your PATH to include the lab installation of QIIME2
