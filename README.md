@@ -42,7 +42,9 @@ hyakalloc
 request interactive compute node (activate screen (https://linuxize.com/post/how-to-use-linux-screen/) first; it doesn't seem like it can be activated from a compute node):  
 srun -A zaneveld -p compute-bigmem --time=[hours:minutes:seconds OR days-hours] --mem=[memory amount]G --pty /bin/bash
 
-*Example*:
+*Examples*:
+srun -A zaneveld -p bigmem --time=3:00:00 --mem=15G --pty /bin/bash
+
 srun -A bbiosci -p compute --time=3:00:00 --mem=15G --pty /bin/bash
 
 Use this for short-term tasks
