@@ -18,27 +18,35 @@ ssh netid@klone.hyak.uw.edu
 
 You'll need your phone handy because the HYAK server will call your phone to confirm your login.
 
-### Upload file
-copy file to server from local directory (with large files, I got better speeds by using wget to grab files from the web rather than transferring from local. UW network was also faster than home wifi (by an order of magnitude)):  
-scp [source filepath] [destination directory]  
-
-scp ./GSMP_metadata.txt zaneveld@klone.hyak.uw.edu:/gscratch/zaneveld/bbio495/GSMP_sponge_data
-
-### Download a file
-Download a file called GSMP_metadata.txt from the zaneveld account on klone.
-
-The format is `scp` [username]@[server]:[filepath] [destination] where each thing in brackets gets replaced by the username, server address, filepath, or local destination based on your account and what file you want to copy. 
-
-*Example*
-scp zaneveld@klone.hyak.uw.edu:/gscratch/zaneveld/bbio495/GSMP_sponge_data/GSMP_metadata.txt ./GSMP_metadata.txt 
 
 ## For folks in the Zaneveld lab / BBIO495 who are using QIIME2
+
+### Head to the class directory
+```
+cd /gscratch/zaneveld/bbio495_2022
+```
+#### Activate qiime2
+
+For BBIO495, I've added an activate_qiime.sh script. It's just a text file with two commands in it.
+You can either source this script or run the two commands yourself one by one. 
+```
+source activate_qiime2.sh
+```
+*or*
+```
+export PATH=$PATH:/gscratch/zaneveld/miniconda3/bin:/gscratch/zaneveld/miniconda3/condabin
+source activate qiime2-2021.4
+```
+*Notes:*
+-The export PATH command tells the machine where to look to find conda, a program for managing different pieces of installed software/libraries and creating virtual environments like the one QIIME2 uses
+- the source activate qiime2-2021.4 command uses conda to activate qiime2 and start up its virtual environment
+- After running, you should see something like `(qiime2-2021.4) [zaneveld@klone1 bbio495_2022]$` as your cursor
 
 ### View available nodes
 **view available resources:**  
 hyakalloc
 
-### Request interactive node
+### Request an interactive node
 request interactive compute node (activate screen (https://linuxize.com/post/how-to-use-linux-screen/) first; it doesn't seem like it can be activated from a compute node):  
 srun -A zaneveld -p compute-bigmem --time=[hours:minutes:seconds OR days-hours] --mem=[memory amount]G --pty /bin/bash
 
@@ -49,15 +57,65 @@ srun -A bbiosci -p compute --time=3:00:00 --mem=15G --pty /bin/bash
 
 Use this for short-term tasks
 
+*Notes:*
+After getting a node, your cursor will change to say your `username` then `@` then `n` and the node number. For example: `[zaneveld@n3099 bbio495_2022]`
+
+### List which qiime2 plugins are available
+
+qiime --help
+
+### List the methods and visualizers available for a particular plugin
+The general format is qiime [plugin name] --help.
+
+**Example**
+qiime diversity --help
+
+### List the input and output paths, as well as other parameters needed to run a qiime2 method or visualizer
+The general format is qiime [plugin_name] [method_name] --help
+
+**Example**
+qiime diversity beta --help
+
+### Tell a qiime method or visualizer where a file is
+This is usually done by supplying the *relative path* to that file (e.g. how to get from your current working directory to the location of that file).
+The help for qiime feature-table filter-samples describes  the --i-table parameter like this:
+```
+ --i-table ARTIFACT FeatureTable[Frequency¹ | RelativeFrequency² |
+    PresenceAbsence³ | Composition⁴]
+                       The feature table from which samples should be
+                       filtered.                                    [required]
+```
+This means that as part of the command we will write `--i-table` then a space then the relative path to whatever feature table `.qza` file we want to input into that method (which depends on our specific analysis and what we want to accomplish). Here's an example of how this might look within a full command:
+```
+qiime feature-table filter-samples --i-table ../input/feature_table_decon_all_1000.qza --m-metadata-file ../input/GCMP_EMP_map_r29.txt --p-where "[sample_type_EMP]='coral'" --o-filtered-table ../output/feature_table_decon_all_1000_coral_only.qza
+```                       
+                  
+
+### Download a file
+Download a file called GSMP_metadata.txt from the zaneveld account on klone.
+
+To download a file, from a command line interface with scp installed (e.g. Terminal on MacOSX or Git Bash on Windows), you can use the scp command *on your local computer*. The format is `scp` [username]@[server]:[filepath] [destination] where each thing in brackets gets replaced by the username, server address, filepath, or local destination based on your account and what file you want to copy. 
+
+*Example*
+scp zaneveld@klone.hyak.uw.edu:/gscratch/zaneveld/bbio495/GSMP_sponge_data/GSMP_metadata.txt ./GSMP_metadata.txt 
+
+*Notes*
+This is useful for downloading .qzv files you generate with qiime2.
+
+### Upload file
+copy file to server from local directory (with large files, I got better speeds by using wget to grab files from the web rather than transferring from local. UW network was also faster than home wifi (by an order of magnitude)):  
+scp [source filepath] [destination directory]  
+
+scp ./GSMP_metadata.txt zaneveld@klone.hyak.uw.edu:/gscratch/zaneveld/bbio495/GSMP_sponge_data
+
+## General Notes
+
 ### Request nodes and run a script (for longer scripts)
 You can also write out commands into a file and run them using slurm. 
 sbatch [filepath].slurm  
 instructions for .slurm file here (https://hyak.uw.edu/docs/compute/scheduling-jobs#batch-jobs). Only thing to note is that if you're using qiime2, you'll need to activate the conda environment within the script by adding these lines above your command line or python instructions:  
 eval "$(conda shell.bash hook)"  
 conda activate [qiime2 environment] 
-
-### Head to the class directory
-cd /gscratch/zaneveld/bbio495_2022
 
 
 ### Update your PATH to include the lab installation of QIIME2
