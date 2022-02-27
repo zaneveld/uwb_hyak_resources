@@ -78,8 +78,5 @@ squeue -u [netid]
 ### view all active compute nodes
 squeue -A zaneveld
 
-### view your compute nodes
-squeue -u [netid]
-
 ### rejoin compute node already allocated  
 sattach [jobid].0
