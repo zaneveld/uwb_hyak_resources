@@ -97,7 +97,7 @@ Download a file called GSMP_metadata.txt from the zaneveld account on klone.
 To download a file, from a command line interface with scp installed (e.g. Terminal on MacOSX or Git Bash on Windows), you can use the scp command *on your local computer*. The format is `scp` [username]@[server]:[filepath] [destination] where each thing in brackets gets replaced by the username, server address, filepath, or local destination based on your account and what file you want to copy. 
 
 *Example*
-scp zaneveld@klone.hyak.uw.edu:/gscratch/zaneveld/bbio495/GSMP_sponge_data/GSMP_metadata.txt ./GSMP_metadata.txt 
+scp zaneveld@klone.hyak.uw.edu:/gscratch/zaneveld/bbio495_2022/GSMP_sponge_data/GSMP_metadata.txt ./GSMP_metadata.txt 
 
 *Notes*
 This is useful for downloading .qzv files you generate with qiime2.
@@ -106,7 +106,7 @@ This is useful for downloading .qzv files you generate with qiime2.
 copy file to server from local directory (with large files, I got better speeds by using wget to grab files from the web rather than transferring from local. UW network was also faster than home wifi (by an order of magnitude)):  
 scp [source filepath] [destination directory]  
 
-scp ./GSMP_metadata.txt zaneveld@klone.hyak.uw.edu:/gscratch/zaneveld/bbio495/GSMP_sponge_data
+scp ./GSMP_metadata.txt zaneveld@klone.hyak.uw.edu:/gscratch/zaneveld/bbio495_2022/GSMP_sponge_data
 
 ## General Notes
 
