@@ -70,7 +70,7 @@ Once you have added conda to your path, you can then use it to activate QIIME2.
 
 source activate qiime2-2021.4
 
-# CRITICAL NOTE: DO NOT RUN THE QIIME2 TUTORIAL DIRECTLY ON THE LOGIN NODE. You **MUST** first get an interactive node using srun.
+# CRITICAL NOTE: DO NOT RUN THE QIIME2 TUTORIAL DIRECTLY ON THE LOGIN NODE. You **MUST** first get an interactive node using salloc.
 
 ### view your active compute nodes  
 squeue -u [netid]
