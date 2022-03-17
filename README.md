@@ -48,12 +48,12 @@ hyakalloc
 
 ### Request an interactive node
 request interactive compute node (activate screen (https://linuxize.com/post/how-to-use-linux-screen/) first; it doesn't seem like it can be activated from a compute node):  
-srun -A zaneveld -p compute-bigmem --time=[hours:minutes:seconds OR days-hours] --mem=[memory amount]G --pty /bin/bash
+salloc -A zaneveld -p compute-bigmem --time=[hours:minutes:seconds OR days-hours] --mem=[memory amount]G
 
 *Examples*:
-srun -A zaneveld -p bigmem --time=3:00:00 --mem=15G --pty /bin/bash
+salloc -A zaneveld -p bigmem --time=3:00:00 --mem=15G
 
-srun -A bbiosci -p compute --time=3:00:00 --mem=15G --pty /bin/bash
+salloc -A bbiosci -p compute --time=3:00:00 --mem=15G
 
 Use this for short-term tasks
 
@@ -128,7 +128,7 @@ Once you have added conda to your path, you can then use it to activate QIIME2.
 
 source activate qiime2-2021.4
 
-# CRITICAL NOTE: DO NOT RUN THE QIIME2 TUTORIAL DIRECTLY ON THE LOGIN NODE. You **MUST** first get an interactive node using srun.
+# CRITICAL NOTE: DO NOT RUN THE QIIME2 TUTORIAL DIRECTLY ON THE LOGIN NODE. You **MUST** first get an interactive node using salloc.
 
 ### view your active compute nodes  
 squeue -u [netid]
