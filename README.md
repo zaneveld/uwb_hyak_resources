@@ -43,7 +43,7 @@ request interactive compute node (activate screen (https://linuxize.com/post/how
 salloc -A zaneveld -p compute-bigmem --time=[hours:minutes:seconds OR days-hours] --mem=[memory amount]G
 
 *Examples*:
-salloc -A zaneveld -p bigmem --time=3:00:00 --mem=15G
+salloc -A zaneveld -p compute-bigmem --time=3:00:00 --mem=15G
 
 salloc -A bbiosci -p compute --time=3:00:00 --mem=15G
 
