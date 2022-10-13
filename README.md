@@ -80,3 +80,40 @@ squeue -A zaneveld
 
 ### rejoin compute node already allocated  
 sattach [jobid].0
+
+
+
+
+### working with Jupyter Lab / Jupyter Notebook
+#The Hyak docs have a reasonable tutorial here: https://hyak.uw.edu/docs/tools/jupyter
+
+#Briefly:
+#Request a compute node with salloc:
+salloc -A zaneveld -p compute-bigmem --time=0-4 --mem=10G
+
+#activate the conda enviroment in the compute node:
+conda activate qiime2-2021.4
+
+#(1st time) Generate a config file to reduce the work you have to do each time to start the server :
+jupyter-notebook --generate-config
+jupyter-notebook password
+vim ~/.jupyter/jupyter_notebook_config.py
+
+#Change the following lines by un-commenting them and setting them equal to the following values
+c.NotebookApp.port = 9195 #this can be any port not currently used by your computer
+c.NotebookApp.ip = '0.0.0.0'
+
+#exit vim. You won't need to repeat that step.
+
+#activate jupyter notebook from the compute node:
+jupyter-notebook
+#stdout gives you a bunch of info. You're interested in the address at which Jupyter Notebook is running:
+#"Jupyter Notebook 6.4.5 is running at:"
+#"http://n3358:9195/"
+#for instance. if this address has a "token=[long hex string]" at the end, you haven't set a password
+#I think the address is just the node followed by the port
+
+#in a different terminal:
+ssh [netid]@klone.hyak.uw.edu -L [port]:[node]:[port]
+
+open a browser and jupyter notebook should be at http://localhost:[port]
