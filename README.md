@@ -174,4 +174,17 @@ jupyter-notebook
 #in a different terminal:  
 ssh [netid]@klone.hyak.uw.edu -L [port]:[node]:[port]  
   
-open a browser and jupyter notebook should be at http://localhost:[port]  
+open a browser and jupyter notebook should be at http://localhost:[port]
+
+#once I got more comfortable with the process, I put the instructions for the first ssh session into an
+#sbatch script (activate conda, then activate jupyter notebook). I then made a shell script which launches
+#the sbatch script, waits a few seconds, and then runs squeue to show what node was activated. saves a few
+#steps.
+
+#sh file:
+sbatch /gscratch/zaneveld/sonettd/organelle_removal/sbatch_jupyter.slurm
+sleep 4
+squeue -u sonettd
+
+#additionally, if you leave a browser tab open to the jupyter notebook directory (localhost:[port]/tree),
+#it seems like you can just refresh the page once everything is set up and it will remember your login
