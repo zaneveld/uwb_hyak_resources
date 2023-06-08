@@ -140,12 +140,12 @@ squeue -A zaneveld
 sattach [jobid].0
 
 
-### Using containers
-#Conda, the package manager used by QIIME2 to collect the dozens of packages needed, generates a truly massive amount of small files, which causes headaches for the Hyak administrators. To get around this, we use a container, which (among other more important things) collects all those files into a single object as far as Hyak is concerned.
-#We've built a container with the current build of QIIME2 and jupyter notebook located at /gscratch/zaneveld/conda/qiime2-2023.5-jupyter.sif. Basically, anytime that you need access to qiime2, instead of activate qiime2, you instead launch the container with
+### Using containers  
+#Conda, the package manager used by QIIME2 to collect the dozens of packages needed, generates a truly massive amount of small files, which causes headaches for the Hyak administrators. To get around this, we use a container, which (among other more important things) collects all those files into a single object as far as Hyak is concerned.  
+#We've built a container with the current build of QIIME2 and jupyter notebook located at /gscratch/zaneveld/conda/qiime2-2023.5-jupyter.sif. Basically, anytime that you need access to qiime2, instead of activate qiime2, you instead launch the container with  
 apptainer shell –bind /gscratch /gscratch/zaneveld/conda/qiime2-2023.5-jupyter.sif
 
-#and then activate qiime2 with
+#and then activate qiime2 with  
 source activate qiime2-2023.5
 
 
