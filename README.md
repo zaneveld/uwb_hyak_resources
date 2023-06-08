@@ -140,6 +140,13 @@ squeue -A zaneveld
 sattach [jobid].0
 
 
+### Using containers
+#Conda, the package manager used by QIIME2 to collect the dozens of packages needed, generates a truly massive amount of small files, which causes headaches for the Hyak administrators. To get around this, we use a container, which (among other more important things) collects all those files into a single object as far as Hyak is concerned.
+#We've built a container with the current build of QIIME2 and jupyter notebook located at /gscratch/zaneveld/conda/qiime2-2023.5-jupyter.sif. Basically, anytime that you need access to qiime2, instead of activate qiime2, you instead launch the container with
+apptainer shell –bind /gscratch /gscratch/zaneveld/conda/qiime2-2023.5-jupyter.sif
+
+#and then activate qiime2 with
+source activate qiime2-2023.5
 
 
 ### working with Jupyter Lab / Jupyter Notebook  
@@ -164,7 +171,7 @@ c.NotebookApp.ip = '0.0.0.0'
 #exit vim. You won't need to repeat that step.  
 
 #activate jupyter notebook from the compute node:  
-jupyter-notebook  
+jupyter-notebook --no-browser --notebook-dir=/gscratch/zaneveld/[NETID]  
 #stdout gives you a bunch of info. You're interested in the address at which Jupyter Notebook is running:  
 #"Jupyter Notebook 6.4.5 is running at:"  
 #"http://n3358:9195/"  
