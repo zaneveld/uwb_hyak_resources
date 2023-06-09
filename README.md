@@ -156,8 +156,9 @@ source activate qiime2-2023.5
 #Request a compute node with salloc:  
 salloc -A zaneveld -p compute-bigmem --time=0-4 --mem=10G  
 
-#activate the conda enviroment in the compute node:  
-conda activate qiime2-2021.4  
+#in the compute node, activate the container, then the conda enviroment:  
+apptainer shell –bind /gscratch /gscratch/zaneveld/conda/qiime2-2023.5-jupyter.sif
+source activate qiime2-2023.5
   
 #(1st time) Generate a config file to reduce the work you have to do each time to start the server:  
 jupyter-notebook --generate-config  
@@ -171,7 +172,7 @@ c.NotebookApp.ip = '0.0.0.0'
 #exit vim. You won't need to repeat that step.  
 
 #activate jupyter notebook from the compute node:  
-jupyter-notebook --no-browser --notebook-dir=/gscratch/zaneveld/[NETID]  
+jupyter-notebook --no-browser --notebook-dir=/gscratch/zaneveld/[wherever you want]  
 #stdout gives you a bunch of info. You're interested in the address at which Jupyter Notebook is running:  
 #"Jupyter Notebook 6.4.5 is running at:"  
 #"http://n3358:9195/"  
