@@ -150,49 +150,47 @@ source activate qiime2-2023.5
 
 
 ### working with Jupyter Lab / Jupyter Notebook  
-#The Hyak docs have a reasonable tutorial here: https://hyak.uw.edu/docs/tools/jupyter  
+#The Hyak docs have a reasonable tutorial here: https://hyak.uw.edu/docs/tools/jupyter
+#I've modified things a little bit to streamline them and make them work with our container
 
 #Briefly:  
 #Request a compute node with salloc:  
-salloc -A zaneveld -p compute-bigmem --time=0-4 --mem=10G  
+salloc -p compute-bigmem --time=0-4 --mem=10G  
 
-#in the compute node, activate the container, then the conda enviroment:  
-apptainer shell –bind /gscratch /gscratch/zaneveld/conda/qiime2-2023.5-jupyter.sif
-source activate qiime2-2023.5
-  
 #(1st time) Generate a config file to reduce the work you have to do each time to start the server:  
-jupyter-notebook --generate-config  
-jupyter-notebook password  
-vim ~/.jupyter/jupyter_notebook_config.py  
-  
-#Change the following lines by un-commenting them and setting them equal to the following values  
-c.NotebookApp.port = 9195 #this can be any port not currently used by your computer  
-c.NotebookApp.ip = '0.0.0.0'  
-  
-#exit vim. You won't need to repeat that step.  
 
-#activate jupyter notebook from the compute node:  
-jupyter-notebook --no-browser --notebook-dir=/gscratch/zaneveld/[wherever you want]  
+#activate the container to gain access to the jupyter notebook installation:  
+apptainer exec –bind /gscratch /gscratch/zaneveld/conda/qiime2-2023.5+.sif  
+
+#set a password so you don't have to keep track of authentication tokens
+jupyter-notebook password  
+
+#you can also edit the config rather than specifying these parameters every time you launch your server. up to you.
+jupyter-notebook --generate-config  
+vim ~/.jupyter/jupyter_notebook_config.py  
+
+#uncomment and change these variables
+c.NotebookApp.port = 9195  
+c.NotebookApp.ip = '0.0.0.0'  
+c.NotebookApp.notebook_dir = '[starting_directory]'  
+
+
+#exit the container, you're done with the setup stuff
+exit
+
+#in the compute node, activate the container, but pass the jupyter notebook start command with the container command.  
+#the port number can be any unused port on your computer; the tutorial suggests 9195. If you need multiple servers for some  
+#reason, you can increment the port to avoid collisions  
+
+apptainer exec –bind /gscratch /gscratch/zaneveld/conda/qiime2-2023.5+.sif jupyter notebook --no-browser --ip 0.0.0.0 --notebook-dir=[startind_directory] --port [port_number]  
+
 #stdout gives you a bunch of info. You're interested in the address at which Jupyter Notebook is running:  
 #"Jupyter Notebook 6.4.5 is running at:"  
 #"http://n3358:9195/"  
-#for instance. if this address has a "token=[long hex string]" at the end, you haven't set a password  
-#I think the address is just the node followed by the port  
+#for instance. if this address has a "token=[long hex string]" at the end, you haven't set a password and this is the token  
+#the address is just the node followed by the port  
   
 #in a different terminal:  
 ssh [netid]@klone.hyak.uw.edu -L [port]:[node]:[port]  
   
 open a browser and jupyter notebook should be at http://localhost:[port]
-
-#once I got more comfortable with the process, I put the instructions for the first ssh session into an
-#sbatch script (activate conda, then activate jupyter notebook). I then made a shell script which launches
-#the sbatch script, waits a few seconds, and then runs squeue to show what node was activated. saves a few
-#steps.
-
-#sh file:
-sbatch /gscratch/zaneveld/sonettd/organelle_removal/sbatch_jupyter.slurm
-sleep 4
-squeue -u sonettd
-
-#additionally, if you leave a browser tab open to the jupyter notebook directory (localhost:[port]/tree),
-#it seems like you can just refresh the page once everything is set up and it will remember your login
