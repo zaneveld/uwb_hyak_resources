@@ -143,11 +143,15 @@ sattach [jobid].0
 ### Using containers  
 #Conda, the package manager used by QIIME2 to collect the dozens of packages needed, generates a truly massive amount of small files, which causes headaches for the Hyak administrators. To get around this, we use a container, which (among other more important things) collects all those files into a single object as far as Hyak is concerned.  
 #We've built a container with the current build of QIIME2 and jupyter notebook located at /gscratch/zaneveld/conda/qiime2-2023.5-jupyter.sif. Basically, anytime that you need access to qiime2, instead of activate qiime2, you instead launch the container with  
-apptainer shell –bind /gscratch /gscratch/zaneveld/conda/qiime2-2023.5-jupyter.sif
+apptainer shell –bind /gscratch /gscratch/zaneveld/conda/qiime2-2023.5+.sif  
 
-#and then activate qiime2 with  
-source activate qiime2-2023.5
+#activating the conda environment is built into the container, so you should be dropped in, ready to go  
 
+#when you want a non-interactive container (say, sbatch or jupyter notebook, below) you can use  
+apptainer exec --bind /gscratch /gscratch/zaneveld/conda/q2-2023.5+.sif [commands to run in the container]  
+
+#in this manner, you can build an sbatch script to activate the container and then run a shell or python file
+#with qiime2 commands
 
 ### working with Jupyter Lab / Jupyter Notebook  
 #The Hyak docs have a reasonable tutorial here: https://hyak.uw.edu/docs/tools/jupyter
@@ -165,7 +169,7 @@ apptainer exec –bind /gscratch /gscratch/zaneveld/conda/qiime2-2023.5+.sif
 #set a password so you don't have to keep track of authentication tokens
 jupyter-notebook password  
 
-#you can also edit the config rather than specifying these parameters every time you launch your server. up to you.
+#you can also edit the config rather than specifying these parameters every time you launch your server:  
 jupyter-notebook --generate-config  
 vim ~/.jupyter/jupyter_notebook_config.py  
 
