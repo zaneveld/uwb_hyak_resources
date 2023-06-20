@@ -186,7 +186,7 @@ exit
 #the port number can be any unused port on your computer; the tutorial suggests 9195. If you need multiple servers for some  
 #reason, you can increment the port to avoid collisions  
 
-apptainer exec –bind /gscratch /gscratch/zaneveld/conda/qiime2-2023.5+.sif jupyter notebook --no-browser --ip 0.0.0.0 --notebook-dir=[startind_directory] --port [port_number]  
+apptainer exec –-bind /gscratch /gscratch/zaneveld/conda/q2-2023.5+.sif jupyter notebook --no-browser --ip 0.0.0.0 --notebook-dir [startind_directory] --port [port_number]  
 
 #stdout gives you a bunch of info. You're interested in the address at which Jupyter Notebook is running:  
 #"Jupyter Notebook 6.4.5 is running at:"  
