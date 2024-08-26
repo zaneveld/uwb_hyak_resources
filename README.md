@@ -21,7 +21,7 @@ ssh [netid]@klone.hyak.uw.edu
 
 [brackets] mean replace the brackets and the text inside with the thing being referenced, so to login use your netid (used to log in to Canvas)
 
-Similar to Canvas, Hyak is protected by 2-factor authentication, so you'll likely need your phone handy to confirm your login.
+Similar to Canvas, Hyak is protected by 2-factor authentication, so you'll likely need your phone handy to confirm your login (and Hyak will prompt you every time you login).
 
 
 ## For folks in the Zaneveld lab / BBIO495 who are using QIIME2
