@@ -7,16 +7,21 @@ https://hyak.uw.edu/docs
 ## Cheat sheet
 
 ### Setup (skip if already familiar with and set up for SSH)
+The primary way to interact with Hyak is through Secure Shell, or ssh, which lets us access the command line.
+
 For Windows users, you can install [Git](https://git-scm.com/downloads). This will come with Git BASH, a command line BASH interface. Git BASH includes `ssh`, a command line program that lets you connect to the server.
+If you're in for the long haul, you can install the Windows Subsystem for Linux which will ease some of the headaches associated with trying to use command line tools in Windows.
+
+ssh should already be available to Mac and Linux users.
 
 ### Login
 In order to work on Hyak you'll need to log in. From within either Terminal (MacOSX) or Git Bash (Windows)
 
-ssh netid@klone.hyak.uw.edu
+ssh [netid]@klone.hyak.uw.edu
 
-(replace netid with your netid used to log in to Canvas)
+[brackets] mean replace the brackets and the text inside with the thing being referenced, so to login use your netid (used to log in to Canvas)
 
-You'll need your phone handy because the HYAK server will call your phone to confirm your login.
+Similar to Canvas, Hyak is protected by 2-factor authentication, so you'll likely need your phone handy to confirm your login (and Hyak will prompt you every time you login).
 
 
 ## For folks in the Zaneveld lab / BBIO495 who are using QIIME2
