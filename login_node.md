@@ -18,7 +18,7 @@ The storage here is substantially increased (1TB) but is shared between all of U
 
 Let's make a test folder, and a text document inside of it.
 
-`mkdir test_folder`
+`mkdir test_folder`  
 `cd test_folder`
 
 Two of the command line text editors are Vim and Nano. Vim is generally considered more powerful, more common, and less user-friendly. Nano is a little more kind, and works fine for light text editing.
@@ -31,15 +31,18 @@ Type whatever you want, then [ctrl/cmd]+O to save and [ctrl/cmd]+X to quit.
 
 We'll clean up our work so that someone else can do this from scratch:
 
-`rm new_document.txt` deletes the text file we created
-`cd ../` moves us out of the test_folder directory
-`rmdir test_folder` deletes the empty folder
+`rm new_document.txt` deletes the text file we created  
+`cd ../` moves us out of the test_folder directory  
+`rmdir test_folder` deletes the empty folder  
 
-There's no undo or recycling bin on Hyak, so if you're not 100% sure you'll never need it again, it's safer to keep things around until the end of the project. It's also a good reminder that you should have backups of critical files in case something goes wrong with Hyak. To move files back and forth from your personal computer to Hyak, you can use `scp`
+There's no undo or recycling bin on Hyak, so if you're not 100% sure you'll never need it again, it's safer to keep things around until the end of the project. It's also a good reminder that you should have backups of critical files in case something goes wrong with Hyak. To copy files to and from your personal computer to Hyak, you can use `scp [path/to/source/file] [path/to/destination]`  
 
-`scp [path/to/source/file] [path/to/destination]`
+It's more straightforward to do this from your own computer rather than trying to manage things from Hyak (your own computer probably isn't set up for ssh sessions (and if it is, you don't need my help)).
 
-It's more straightforward to do this from your own computer rather than trying to manage things from Hyak (your own computer probably isn't set up for ssh sessions).
+`exit` will close the login node and disconnect you from hyak.  
 
-`exit` will close the login node and disconnect you from hyak.
-`scp [path/to/source/file] [netid]@klone.hyak.uw.edu:/mmfs1/home/[netid]` will move a file from your computer to your home directory on hyak. Each time you do this, you'll have to authenticate with your password and 2FA.
+scp can access Hyak and place files for you with a little extra syntax:
+
+`scp [path/to/source/file] [netid]@klone.hyak.uw.edu:[path/to/destination/in/hyak]`  
+
+Each time you do this, you'll have to authenticate with your password and 2FA.
