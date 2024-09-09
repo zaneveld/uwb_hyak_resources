@@ -1,3 +1,5 @@
+## Getting started
+
 The most common way of using Hyak is via Secure Shell (SSH). If you're on Mac or Linux, it should already be installed on the terminal. If you're using Windows, things are a little more complicated. You'lll either want to install Git or the Windows Subsystem for Linux (WSL).
 
 The basic command to access Hyak is
@@ -46,3 +48,12 @@ scp can access Hyak and place files for you with a little extra syntax:
 `scp [path/to/source/file] [netid]@klone.hyak.uw.edu:[path/to/destination/in/hyak]`  
 
 Each time you do this, you'll have to authenticate with your password and 2FA.
+
+## Requesting a compute node
+
+There are two main ways to use compute nodes, either interactively or with a batch command. Interactive is exactly what it sounds like - you tell Hyak the commands you want to run, it runs them, and you can see the results and submit new commands as needed. This is the easiest way to test things out, because you get immediate feedback if you typed something incorrectly.
+
+To get an interactive session with a compute node:
+
+`salloc -A [account] -p [partition] --mem=[memory] --time=[duration]`
+
