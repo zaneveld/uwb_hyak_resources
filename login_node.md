@@ -53,6 +53,12 @@ Each time you do this, you'll have to authenticate with your password and 2FA.
 
 There are two main ways to use compute nodes, either interactively or with a batch command. Interactive is exactly what it sounds like - you tell Hyak the commands you want to run, it runs them, and you can see the results and submit new commands as needed. This is the easiest way to test things out, because you get immediate feedback if you typed something incorrectly.
 
+### Checking which partitions you have access to
+
+The `hyakalloc` command will show you a table of partitions and accounts that you have access to, as well as how many CPUs and GPUs are available on each.
+
+### Starting an interactive session
+
 To get an interactive session with a compute node:
 
 `salloc -A [account] -p [partition] --mem=[memory] --time=[duration]`
