@@ -1,9 +1,12 @@
-#Log in 
+# Steps to Create a Custom Singularity Instance
 
 
-#go to gscratch/zaneveld
+# Log in 
 
-#allocate a node
+
+# go to gscratch/zaneveld
+
+# allocate a node
 salloc -A zaneveld -p compute-bigmem -N 1 -n 2 --mem=10G --time=1:00:00
 
 ## Create a basic_tools singularity definition file
