@@ -52,9 +52,24 @@ hyphy slac --alignment CVV_G.fas --tree ./hyphy/hyphy_tutorial_files/CVV_G_GARD.
 `
 
 Note that error logs and results .json file may be output in your current working directory. 
-As is probably clear, to run a SLAC analysis on data you cared about, you'd have to replace CVV_G.fas with your *aligned* fasta file for a set of homologous sequences and CVV_G_Gard.nex
-with the name of your tree file. Basically just filling in the alignment and tree inputs using the `--alignment` and `--tree` command line parameters
+As is probably clear, to run a SLAC analysis on data you cared about, you'd have to replace CVV_G.fas with your *aligned* fasta file for a set of homologous sequences and CVV_G_Gard.nex with the name of your tree file. Basically just filling in the alignment and tree inputs using the `--alignment` and `--tree` command line parameters
 
+## Downloading your data
+To work further with your results, you'll have to download them from the server. Exit apptainer using
+`exit`.
 
+Use `ls` to check what new files were generated, paying special attention to the `.json` file.
+
+In order to bring this file home to your local machine, we will need to know it's exact location (i.e. it's absolute path like `/gscratch/zanveld/some_file.txt`) in the file system on the server. You can check this with `pwd`
+
+Then on your local machine **in a separate command line interface tab or window** you can download the results file using `scp`. Here's an example:
+
+scp zaneveld@klone.hyak.uw.edu:/gscratch/zaneveld/hyphy/results.json ./
+
+## Plotting your HyPhy Data with HyPhy Data Vision
+The developers state that the results .json can be visualized with HyPhy Data Vision here: 
+http://vision.hyphy.org/
+
+I can update this page once I've tried it out.
 
 
