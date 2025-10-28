@@ -38,6 +38,10 @@ To pick, among options for dN/dS analysis, we need to understand a few things:
 The HyPhy website has suggestions for what method to use based on what you want to test and how much data you have:
 https://stevenweaver.github.io/hyphy-site/getting-started/
 
+More detailed explanations of selection tests are avialable here:
+https://stevenweaver.github.io/hyphy-site/methods/selection-methods/#busted
+
+
 
 Check out the HyPhy website and papers cited in hyphy help for more details (https://stevenweaver.github.io/hyphy-site/tutorials/current-release-tutorial/)
 
