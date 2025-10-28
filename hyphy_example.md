@@ -35,14 +35,22 @@ To pick, among options for dN/dS analysis, we need to understand a few things:
 - Do we want to test for selection that is 'pervasive' (meaning continuous over a tree) or 'episodic' (meaning it only happens sometimes)
 - Do we want to test for selection overall (e.g. on this tree there was positive selection) or only on certain branches.
 
+The HyPhy website has suggestions for what method to use based on what you want to test and how much data you have:
+https://stevenweaver.github.io/hyphy-site/getting-started/
+
+
 Check out the HyPhy website and papers cited in hyphy help for more details (https://stevenweaver.github.io/hyphy-site/tutorials/current-release-tutorial/)
 
-With all that said, here is a representative example of the general format for running a hyphy analysis:
+With all that said, here is a representative example of the general format for running a hyphy analysis. It depends on having a FASTA-format alignment file called CVV_G.fas and a NEXUS format CVV_G_GARD.nex file in your current working directory. If they were elsewhere, you'd have to replace the file name with the absolute path to their location:
 
+`
 hyphy slac --alignment CVV_G.fas --tree ./hyphy/hyphy_tutorial_files/CVV_G_GARD.nex
+`
 
 Note that error logs and results .json file may be output in your current working directory. 
 As is probably clear, to run a SLAC analysis on data you cared about, you'd have to replace CVV_G.fas with your *aligned* fasta file for a set of homologous sequences and CVV_G_Gard.nex
 with the name of your tree file. Basically just filling in the alignment and tree inputs using the `--alignment` and `--tree` command line parameters
+
+
 
 
