@@ -14,7 +14,7 @@ The main way GitHub is able to connect the user who is logged into a compute clu
 There is a private-key public key pair that you generate on the server and protect with a password. These are just very short text files.
 The public half then gets uploaded to GitHub.
 
-##Steps 
+## Steps 
 
 
 
