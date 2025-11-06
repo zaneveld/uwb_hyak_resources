@@ -134,7 +134,6 @@ input_file="../output/slurm_command_groups/commands_for_slurm_${SLURM_ARRAY_TASK
 echo "Running Slurm script in the following file ${input_file}"
 </pre>
 
-4.
 5. Submit your job with sbatch
 
 sbatch my_slurm_job.job
