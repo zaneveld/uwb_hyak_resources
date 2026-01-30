@@ -21,24 +21,24 @@ The public half then gets uploaded to GitHub.
 1. Set up a GitHub account if you haven't already
 2. Log into the server
 3. Set your username in git on the server to be your GitHub username
-git config --global user.name "zaneveld"
+`git config --global user.name "zaneveld"`
 4. Set your email on the server to be your GitHub email
-git config --global user.email "your_email_here@gmail.com"
+`git config --global user.email "your_email_here@gmail.com"`
 5. Generate public and private keys on the server using ssh-keygen
-ssh-keygen -t ed25519 -C "your_email@example.com"
+`ssh-keygen -t ed25519 -C "your_email@example.com"`
 6. Start ssh-agent
-eval "$(ssh-agent -s)"
+`eval "$(ssh-agent -s)"`
 7. Add your keys to ssh-agent. Note they by default show up in a hidden .ssh folder on mmfs1 in your home directory.
-ssh-add ~/.ssh/id_ed25519
+`ssh-add ~/.ssh/id_ed25519`
 8. Download the *public* key you generated **to your local computer**. Replace the username and path with your username.
-scp zaneveld@klone.hyak.uw.edu:/mmfs1/home/zaneveld/.ssh/id_ed25519.pub ./
+`scp zaneveld@klone.hyak.uw.edu:/mmfs1/home/zaneveld/.ssh/id_ed25519.pub ./`
 9. Copy the contents of the file to your clipboard:
-cat id_ed25519.pub
+`cat id_ed25519.pub`
 (You might have to manually copy any text that appears)
 9. Go to GitHub, log in. Go to your account by clicking on your picture in the upper right then clicking on Settings. 
 Go to SSH and GPG keys. Hit New SSH Key and paste in your public key
 8. Back on the server, use Git Clone to grab your project
-git clone git@github.com:zaneveld/Holobiont_Models.git
+`git clone git@github.com:zaneveld/Holobiont_Models.git`
 9. Now you're ready to go! Follow the instructions here to practice doing one project change: 
 make sure everything is up to date,
 then create a new named branch, 
