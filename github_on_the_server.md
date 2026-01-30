@@ -37,9 +37,12 @@ The public half then gets uploaded to GitHub.
 (You might have to manually copy any text that appears)
 9. Go to GitHub, log in. Go to your account by clicking on your picture in the upper right then clicking on Settings. 
 Go to SSH and GPG keys. Hit New SSH Key and paste in your public key
-8. Back on the server, use Git Clone to grab your project
+8. Back on the server, use Git Clone to grab your project (if a multi-person project grab *your* fork)
 `git clone git@github.com:zaneveld/Holobiont_Models.git`
-9. Now you're ready to go! Follow the instructions here to practice doing one project change: 
+9. For a multi-person project (only), we need to set the upstream repository. Set the 'upstream' remote to be the main/official version of the project on GitHub.
+    a. Check existing remotes with `git remote -v`. You will probably see two entries for 'origin' but none for 'upstream'
+    b. Add the upstream repository with `git remote add upstream <URL_of_original_repo>`. Replace <URL_of_original_repo> with the upstream repository address in similar format to the exisitng ones (usually this just involves swapping out a user name). These typically end in .git.
+11. Now you're ready to go! Follow the instructions here to practice doing one project change: 
 make sure everything is up to date,
 then create a new named branch, 
 add files you change, 
